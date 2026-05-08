@@ -167,17 +167,7 @@ export function Services() {
                     {service.tagline.toUpperCase()}
                   </div>
 
-                  <p
-                    className="mb-6"
-                    style={{
-                      fontFamily: "'Candara', sans-serif",
-                      color: "rgba(255,255,255,0.4)",
-                      fontSize: "15px",
-                      lineHeight: 1.85,
-                    }}
-                  >
-                    {service.description}
-                  </p>
+                  
 
                   {/* Bullet points */}
                   <ul className="space-y-2">
@@ -191,7 +181,7 @@ export function Services() {
                           style={{
                             fontFamily: "'Candara', sans-serif",
                             color: "rgba(255,255,255,0.35)",
-                            fontSize: "13px",
+                            fontSize: "15px",
                             lineHeight: 1.7,
                           }}
                         >

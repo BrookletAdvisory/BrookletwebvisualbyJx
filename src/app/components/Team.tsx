@@ -13,9 +13,11 @@ const team = [
     expertise: ["Brokerage", "Private Banking", "Commercial-to-Compliance"],
     languages: "English · Japanese · Cantonese · Putonghua",
     bio: [
-      "Thomas has over 25 years of experience in both front-office and compliance roles. He began his career in sales and trading within private banking before moving to senior brokerage positions at OKASAN International, CITIC Securities, and HSBC.",
-      "This front-office background provides him with a practical understanding of business pressures. He later transitioned to compliance, and as Regional Head of Client Services at a leading consultancy, he managed a portfolio of over 140 clients, from global investment banks to specialist asset managers. His experience allows him to deliver compliant and commercially astute solutions.",
-      "Thomas holds a Master of Arts in Economics from Soka University and is fluent in English, Japanese, Cantonese, and Putonghua.",
+      "Career Path: Began in sales, trading, and private banking at HSBC, CITIC Securities, and OKASAN International. This front-office background provides a practical, commercial perspective on compliance.",
+      "Compliance Leadership: Transitioned to compliance consulting, supported the compliance needs of over 140+ financial institutions across Asia.",
+      "Credentials: MA Economics, Soka University.",
+      "Languages: Fluent in English, Japanese, Cantonese, and Putonghua.",
+      "Expertise: Brokerage, Private Banking, Commercial-to-Compliance Solutions.",
     ],
   },
   {
@@ -177,19 +179,42 @@ function BioModal({
 
           {/* Bio paragraphs */}
           <div className="space-y-4">
-            {member.bio.map((para, i) => (
-              <p
-                key={i}
-                style={{
-                  fontFamily: "'Candara', sans-serif",
-                  color: "rgba(255,255,255,0.65)",
-                  fontSize: "15px",
-                  lineHeight: 1.85,
-                }}
-              >
-                {para}
-              </p>
-            ))}
+            {member.bio.map((para, i) => {
+              const colonIdx = para.indexOf(": ");
+              const label = colonIdx !== -1 ? para.slice(0, colonIdx) : null;
+              const content = colonIdx !== -1 ? para.slice(colonIdx + 2) : para;
+              return (
+                <div key={i} style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+                  {label && (
+                    <span
+                      style={{
+                        fontFamily: "'Candara', sans-serif",
+                        display: "inline-block",
+                        alignSelf: "flex-start",
+                        background: "rgba(125,191,164,0.08)",
+                        border: "1px solid rgba(125,191,164,0.18)",
+                        color: "rgba(125,191,164,0.7)",
+                        fontSize: "12px",
+                        letterSpacing: "0.08em",
+                        padding: "2px 10px",
+                      }}
+                    >
+                      {label}
+                    </span>
+                  )}
+                  <span
+                    style={{
+                      fontFamily: "'Candara', sans-serif",
+                      color: "rgba(255,255,255,0.65)",
+                      fontSize: "15px",
+                      lineHeight: 1.85,
+                    }}
+                  >
+                    {content}
+                  </span>
+                </div>
+              );
+            })}
           </div>
 
           {/* Languages footer */}
